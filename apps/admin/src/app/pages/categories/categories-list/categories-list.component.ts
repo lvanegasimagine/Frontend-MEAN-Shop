@@ -16,10 +16,10 @@ export class CategoriesListComponent implements OnInit {
   constructor(private confirmationService: ConfirmationService, private router: Router, private categoriesService: CategoriesService,private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this.loadCategories();
+    this.getCategories();
   }
 
-  loadCategories() {
+  getCategories() {
     this.categoriesService.getCategories().subscribe(resp => {
       this.categories = resp;
       console.log(resp);
@@ -34,7 +34,7 @@ export class CategoriesListComponent implements OnInit {
         accept: () => {
             this.categoriesService.deleteCategory(id).subscribe(resp => {
               this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Category is Deleted!' });
-              this.loadCategories();
+              this.getCategories();
             },(error) => {
               this.messageService.add({severity:'error', summary:'Error', detail:'Category is not Deleted!'});
             });

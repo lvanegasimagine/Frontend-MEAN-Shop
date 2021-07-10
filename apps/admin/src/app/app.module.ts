@@ -15,7 +15,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import {TableModule} from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
-import { CategoriesService } from '@frontend/products';
+import { CategoriesService, ProductsService } from '@frontend/products';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,6 +24,13 @@ import { MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { DropdownModule } from 'primeng/dropdown';
+import { EditorModule } from 'primeng/editor';
 
 const UX_MODULE = [
   CardModule,
@@ -33,10 +40,15 @@ const UX_MODULE = [
   InputTextModule,
   ToastModule,
   ConfirmDialogModule,
-  ColorPickerModule
+  ColorPickerModule,
+  InputNumberModule,
+  InputTextareaModule,
+  InputSwitchModule,
+  DropdownModule,
+  EditorModule
 ];
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent],
+  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent, ProductsListComponent, ProductsFormComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -46,7 +58,7 @@ const UX_MODULE = [
     ReactiveFormsModule,
     ...UX_MODULE
   ],
-  providers: [CategoriesService, MessageService, ConfirmationService],
+  providers: [CategoriesService,ProductsService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
