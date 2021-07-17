@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriesService, Category } from '@frontend/products';
-import { MessageService,ConfirmationService, ConfirmEventType } from 'primeng/api';
-
+import { MessageService,ConfirmationService } from 'primeng/api';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'admin-categories-list',
   templateUrl: './categories-list.component.html',
   styles: [
   ]
 })
-export class CategoriesListComponent implements OnInit {
+export class CategoriesListComponent implements OnInit, OnDestroy {
 
   categories: Category[] = [];
+  endsubs$: Subject<any> = new Subject();
 
   constructor(private confirmationService: ConfirmationService, private router: Router, private categoriesService: CategoriesService,private messageService: MessageService) { }
 
@@ -19,8 +21,13 @@ export class CategoriesListComponent implements OnInit {
     this.getCategories();
   }
 
+  ngOnDestroy() {
+    this.endsubs$.next();
+    this.endsubs$.complete();
+  }
+
   getCategories() {
-    this.categoriesService.getCategories().subscribe(resp => {
+    this.categoriesService.getCategories().pipe(takeUntil(this.endsubs$)).subscribe((resp: any) => {
       this.categories = resp;
       console.log(resp);
     })
@@ -32,7 +39,7 @@ export class CategoriesListComponent implements OnInit {
           header: 'Delete Category',
           icon: 'pi pi-exclamation-triangle',
         accept: () => {
-            this.categoriesService.deleteCategory(id).subscribe(resp => {
+            this.categoriesService.deleteCategory(id).pipe(takeUntil(this.endsubs$)).subscribe(resp => {
               this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Category is Deleted!' });
               this.getCategories();
             },(error) => {
