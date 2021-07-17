@@ -1,1 +1,51 @@
-<p>dashboard works! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed similique incidunt omnis doloremque odio perspiciatis magnam nulla quaerat dolorem hic magni, cum quia animi voluptatem! Doloremque libero ullam sint tempore tenetur cum nemo dolor, explicabo, quos a id aliquam excepturi mollitia possimus eaque sed harum deleniti sunt architecto ipsa nihil veritatis voluptatibus? Est esse numquam maxime earum! Voluptatibus repellat nihil nobis, quasi tempora, maxime vero ipsa rerum ullam qui fuga ab facilis. Reprehenderit laudantium eius iure ullam, provident ad alias quisquam similique enim eligendi exercitationem dignissimos praesentium. Obcaecati numquam sunt vitae, autem perspiciatis amet inventore. Alias assumenda modi quia omnis?</p>
+<div class="admin-page" *ngIf="statistics.length">
+    <p-card header="Dashboard" subheader="Latest Updates">
+      <div class="p-grid">
+        <div class="p-col-3">
+          <p-card styleClass="d-orders">
+            <div class="d-item">
+              <div>
+                <i class="pi pi-shopping-cart"></i><br />
+                <span class="name">Orders</span>
+              </div>
+              <span class="number">{{ statistics[0] }}</span>
+            </div>
+          </p-card>
+        </div>
+        <div class="p-col-3">
+          <p-card styleClass="d-products">
+            <div class="d-item">
+              <div>
+                <i class="pi pi-briefcase"></i><br />
+                <span class="name">Products</span>
+              </div>
+              <span class="number">{{ statistics[1] }}</span>
+            </div>
+          </p-card>
+        </div>
+        <div class="p-col-3">
+          <p-card styleClass="d-users">
+            <div class="d-item">
+              <div>
+                <i class="pi pi-users"></i><br />
+                <span class="name">Users</span>
+              </div>
+              <span class="number">{{ statistics[2] }}</span>
+            </div>
+          </p-card>
+        </div>
+        <div class="p-col-3">
+          <p-card styleClass="d-totalsales">
+            <div class="d-item">
+              <div>
+                <i class="pi pi-dollar"></i><br />
+                <span class="name">TotalSales</span>
+              </div>
+              <span class="number">{{ statistics[3] | currency }}</span>
+            </div>
+          </p-card>
+        </div>
+      </div>
+    </p-card>
+  </div>
+  
