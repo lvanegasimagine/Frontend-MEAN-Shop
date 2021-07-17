@@ -35,6 +35,10 @@ import { UsersFormComponent } from './pages/users/users-form/users-form.componen
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { TagModule } from 'primeng/tag';
 import { InputMaskModule } from 'primeng/inputmask';
+import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
+import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
+import { FieldsetModule } from 'primeng/fieldset';
+import { UsersModule } from '@frontend/users';
 
 const UX_MODULE = [
   CardModule,
@@ -51,10 +55,11 @@ const UX_MODULE = [
   DropdownModule,
   EditorModule,
   TagModule,
-  InputMaskModule
+  InputMaskModule,
+  FieldsetModule
 ];
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent, ProductsListComponent, ProductsFormComponent, UsersFormComponent, UsersListComponent],
+  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoriesListComponent, CategoriesFormComponent, ProductsListComponent, ProductsFormComponent, UsersFormComponent, UsersListComponent, OrdersListComponent, OrdersDetailComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -62,6 +67,7 @@ const UX_MODULE = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    UsersModule,
     ...UX_MODULE
   ],
   providers: [CategoriesService,ProductsService, MessageService, ConfirmationService],
