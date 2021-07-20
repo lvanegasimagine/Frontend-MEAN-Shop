@@ -10,14 +10,26 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@frontend/ui';
 import { AccordionModule } from 'primeng/accordion';
+import { NavComponent } from './shared/nav/nav.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductsModule } from '@frontend/products';
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, ProductListComponent, HeaderComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    HomePageComponent,
+    ProductListComponent,
+    HeaderComponent,
+    FooterComponent,
+    NavComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     UiModule,
-    AccordionModule
+    AccordionModule,
+    HttpClientModule,
+    ProductsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
